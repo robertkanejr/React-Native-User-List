@@ -5,4 +5,8 @@ Redux Installs:
 npm i @reduxjs/toolkit react-redux
 
 Types Checking Installs:
-npm i @types/react-native @types/react-redux
+npm i @types/react-native
+
+@types/react-redux - not needed after react-redux v8
+
+randomuser.me API:
