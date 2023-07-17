@@ -1,27 +1,34 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import * as apiClient from '../../api/apiClient';
 
-//Use this type to serialize user data fetched from the API into usable objects
+//Serialize user data fetched from the API into usable objects
 export type User = {
-  name: string;
+  name: {
+    first: string;
+  };
+  picture: {
+    thumbnail: string;
+  };
 };
 
-//Use this type to define the state of the userList slice
+//Defines the state of the userList slice
 //represents the state that the screen needs to render
 export type UserListState = {
   users: User[];
   loading: boolean;
   error: boolean;
+  nextPage: number;
 };
 
 const initialState: UserListState = {
   users: [],
   loading: false,
   error: false,
+  nextPage: 1,
 };
 
 //Create an async thunk to fetch users from the API
-//it creates actions for the pending, rejected, and fulfilled states
+//with actions for the pending, rejected, and fulfilled states
 export const fetchUsers = createAsyncThunk<{users: User[]}, {page: number}>(
   'fetchUsers',
   async ({page}) => {
@@ -41,7 +48,7 @@ const userListSlice = createSlice({
   name: 'userList',
   initialState: initialState,
   reducers: {},
-  // extra reducers hook into the lifecycle events of the app and are then used to respond to those actions
+  // extra reducers to hook into the lifecycle events of the app and respond to them
   //in this case, we are responding to the fetchUsers actions that are dispatched by the async thunk
   extraReducers: builder => {
     builder
@@ -50,7 +57,9 @@ const userListSlice = createSlice({
         state.error = false;
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.users = action.payload.users;
+        state.nextPage += 1;
+        //append the new users to the existing list of users (pagination)
+        state.users = state.users.concat(action.payload.users);
         state.loading = false;
       })
       .addCase(fetchUsers.rejected, state => {

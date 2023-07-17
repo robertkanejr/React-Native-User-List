@@ -7,7 +7,7 @@ type NetworkResponse<T> = {
   body?: T;
 };
 
-//Network request to fetch users from the API
+//Network request to fetch user data from the API
 export const fetchUsers = async (
   page: number,
   count: number,
