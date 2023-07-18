@@ -28,13 +28,15 @@ const UserList: FunctionComponent = () => {
       {/* render different UIs based on the state of the network request */}
       {screenState.loading && <Text>Loading...</Text>}
       {screenState.error && <Text>Error</Text>}
-      {!screenState.loading && !screenState.error && <Text>Default</Text>}
-      <FlatList
-        data={screenState.users}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item}) => <UserListItem user={item} />}
-        onEndReached={handleOnEndReached}
-      />
+      {/* render the list of users */}
+      {!screenState.loading && !screenState.error && (
+        <FlatList
+          data={screenState.users}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({item}) => <UserListItem user={item} />}
+          onEndReached={handleOnEndReached}
+        />
+      )}
     </>
   );
 };

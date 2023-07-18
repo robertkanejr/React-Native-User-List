@@ -10,12 +10,14 @@ import store from './app/store';
 
 function App({}): JSX.Element {
   return (
-    <SafeAreaView>
-      <ReduxProvider store={store}>
-        <StatusBar />
-        <UserList />
-      </ReduxProvider>
-    </SafeAreaView>
+    <>
+      <StatusBar />
+      <SafeAreaView>
+        <ReduxProvider store={store}>
+          <UserList />
+        </ReduxProvider>
+      </SafeAreaView>
+    </>
   );
 }
 

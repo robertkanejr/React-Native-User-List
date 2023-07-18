@@ -11,7 +11,7 @@ export type User = {
   };
 };
 
-//Defines the state of the userList slice
+//Define the state of the userListSlice
 //represents the state that the screen needs to render
 export type UserListState = {
   users: User[];
@@ -43,7 +43,7 @@ export const fetchUsers = createAsyncThunk<{users: User[]}, {page: number}>(
   },
 );
 
-//Use this slice to define the actions that can be dispatched to update the state
+//Defines the actions that can be dispatched to update the state
 const userListSlice = createSlice({
   name: 'userList',
   initialState: initialState,
