@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useEffect} from 'react';
-import {FlatList, Text} from 'react-native';
+import {ActivityIndicator, FlatList, StyleSheet, Text} from 'react-native';
 import {useAppSelector, useAppDispatch} from '../../app/hooks';
 import {fetchUsers} from './userListSlice';
 import UserListItem from './UserListItem';
@@ -26,8 +26,12 @@ const UserList: FunctionComponent = () => {
   return (
     <>
       {/* render different UIs based on the state of the network request */}
-      {screenState.loading && <Text>Loading...</Text>}
-      {screenState.error && <Text>Error</Text>}
+      {screenState.loading && (
+        <ActivityIndicator size="large" style={style.loading} />
+      )}
+      {screenState.error && (
+        <Text style={style.error}>Error loading user data</Text>
+      )}
       {/* render the list of users */}
       {!screenState.loading && !screenState.error && (
         <FlatList
@@ -40,5 +44,20 @@ const UserList: FunctionComponent = () => {
     </>
   );
 };
+
+//Styles for ActivityIndicator and error text
+const style = StyleSheet.create({
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  error: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'red',
+  },
+});
 
 export default UserList;

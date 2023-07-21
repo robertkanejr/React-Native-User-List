@@ -28,7 +28,7 @@ const initialState: UserListState = {
 };
 
 //Create an async thunk to fetch users from the API
-//with actions for the pending, rejected, and fulfilled states
+//with actions for the rejected, and fulfilled states
 export const fetchUsers = createAsyncThunk<{users: User[]}, {page: number}>(
   'fetchUsers',
   async ({page}) => {
