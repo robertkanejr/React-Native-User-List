@@ -23,19 +23,19 @@ randomuser.me API endpoint:
 ### iPhone Screenshots
 **User List:**
 
-![iPhone List](./assets/screenshots/iPhone-list.png)
+<img src="./assets/screenshots/iPhone-list.png" alt="iPhone List" height="500"/>
 <br>
 <br>
 
 **Loading:**
 
-![iPhone Loading](./assets/screenshots/iPhone-loading.png)  
+<img src="./assets/screenshots/iPhone-loading.png" alt="iPhone Loading" height="500"/>
 <br>
 <br>
 
 **Error:**
 
-![iPhone Error](./assets/screenshots/iPhone-error.png)
+<img src="./assets/screenshots/iPhone-error.png" alt="iPhone Error" height="500"/>
 <br>
 <br>
 
@@ -43,16 +43,16 @@ randomuser.me API endpoint:
 
 **User List:**  
 
-![Android Screenshot](./assets/screenshots/android-list.png)
+<img src="./assets/screenshots/Android-list.png" alt="Android List" height="500"/>
 <br>
 <br>
 
 **Loading:**  
 
-![Android Loading](./assets/screenshots/android-loading.png)
+<img src="./assets/screenshots/Android-loading.png" alt="Android Loading" height="500"/>
 <br>
 <br>
 
 **Error:**
 
-![Android Error](./assets/screenshots/android-error.png)
+<img src="./assets/screenshots/Android-error.png" alt="Android Error" height="500"/>
