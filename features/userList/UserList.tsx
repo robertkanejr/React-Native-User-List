@@ -1,5 +1,11 @@
 import React, {FunctionComponent, useEffect} from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, Text} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {useAppSelector, useAppDispatch} from '../../app/hooks';
 import {fetchUsers} from './userListSlice';
 import UserListItem from './UserListItem';
@@ -27,35 +33,35 @@ const UserList: FunctionComponent = () => {
     <>
       {/* render different UIs based on the state of the network request */}
       {screenState.loading && (
-        <ActivityIndicator size="large" style={style.loading} />
+        <View style={style.container}>
+          <ActivityIndicator size="large" />
+        </View>
       )}
       {screenState.error && (
-        <Text style={style.error}>Error loading user data</Text>
+        <View style={style.container}>
+          <Text style={style.error}>Error loading user data</Text>
+        </View>
       )}
       {/* render the list of users */}
-      {!screenState.loading && !screenState.error && (
-        <FlatList
-          data={screenState.users}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={({item}) => <UserListItem user={item} />}
-          onEndReached={handleOnEndReached}
-        />
-      )}
+      <FlatList
+        data={screenState.users}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({item}) => <UserListItem user={item} />}
+        onEndReached={handleOnEndReached}
+      />
     </>
   );
 };
 
-//Styles for ActivityIndicator and error text
+//Styles for container and error text
 const style = StyleSheet.create({
-  loading: {
-    flex: 1,
-    justifyContent: 'center',
+  container: {
+    height: '50%',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   error: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    fontSize: 20,
     color: 'red',
   },
 });
